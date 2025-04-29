@@ -52,3 +52,8 @@ border: 1px solid black;
     cursor: pointer;
     margin: 10px;
 }
+
+.user-card{
+    padding:10pxx;
+    border: 1px solid black;
+}
