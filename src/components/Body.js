@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import {Link} from "react-router";
+import useOnlineStatus from "../utils/useOnlineStatus";
 const Body=()=>{
 const [listOfRestaurants,setListofRestaurants]=useState([]);
 const [filteredList,setFilteredList]=useState([]);
@@ -17,7 +18,14 @@ console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.resta
 setListofRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 setFilteredList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
-
+const onlineStatus=useOnlineStatus();
+console.log("status,",onlineStatus)
+if(onlineStatus===false)
+   return (
+  <div>
+  <h1>Looks like you are offline</h1>
+  </div>
+  );
 
     return(
       <div className="body">
