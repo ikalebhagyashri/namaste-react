@@ -29,23 +29,25 @@ if(onlineStatus===false)
 
     return(
       <div className="body">
-        <div>
-          <div><input type="text" value={searchText} onChange={(event)=>{setSearchText(event.target.value)}}/><span>
-            <button onClick={()=>{
+        <div className="flex items-center">
+          <div className="m-4 p-4">
+            <input  className="border border-solid border-black" type="text" value={searchText} onChange={(event)=>{setSearchText(event.target.value)}}/><span>
+            <button className="px-4 py-2 bg-green-100 m-4 rounded-lg" onClick={()=>{
               const filteredList=listOfRestaurants.filter((res)=>{
                 return res.info.name.toLowerCase().includes(searchText)})
                 console.log("filtered list",filteredList)
                 setFilteredList(filteredList)              
                }}>Search</button></span></div>
-        </div>
-        <div className="filter">
-            <button className="filter-btn" onClick={()=>{
+       <div className="m-4 p-4">
+            <button className="px-4 py-2 bg-gray-100 rounded-lg" onClick={()=>{
                 console.log("click event")
                 const filteredList = listOfRestaurants.filter((res) => res?.info?.avgRating > 4);
                 setListofRestaurants(filteredList);
             }}>Top Rated Restaurant</button>
         </div>
-        <div className="res-container">
+        </div>
+       
+        <div className="flex flex-wrap">
          
        
          {

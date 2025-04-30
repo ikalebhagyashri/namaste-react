@@ -3,11 +3,11 @@ import {useParams} from "react-router";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 const RestaurantMenu = () => {
 
-    const resInfo=useRestaurantMenu(resId);
+    
     const {resId}=useParams();
-
+    const resInfo=useRestaurantMenu(resId);
     useEffect(() => {
-        fetchData();
+      //  fetchData();
     }, []);
 
 
