@@ -4,20 +4,23 @@ import Header from "./components/Header";
 import Body from "./components/Body";
 import About from "./components/About";
 import ContactUS from "./components/Contact";
-//import Grocery from "./components/Grocery";
+import Cart from "./components/Cart";
 import ErrorNew from "./components/Error";
-import { useEffect } from "react";
+import {Provider} from "react-redux";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router";
 import RestaurantMenu from "./components/RestaurantMenu";
+import appStore from "./utils/appStore";
 
 const Grocery=lazy(()=>import('./components/Grocery'))
 const AppLayout=()=>{
 
  
 
-  return ( <div className="app">     
+  return ( <div className="app">   
+  <Provider store={appStore}>
      <Header/>
      <Outlet/>
+  </Provider>
        </div>)
 };
 
@@ -32,6 +35,7 @@ const AppRouter = () => {
         <Route path="contact" element={<ContactUS />} />
         <Route path="grocery" element={<Suspense fallback={<h1>Loadinggg-----</h1>}><Grocery /></Suspense>} />
         <Route path="restaurants/:resId" element={<RestaurantMenu />} />
+        <Route path="cart" element={<Cart/>}/>
        </Route>
       </Routes>
     </BrowserRouter>

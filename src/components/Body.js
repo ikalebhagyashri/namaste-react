@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard,{isOpenLable} from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import {Link} from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -6,7 +6,7 @@ const Body=()=>{
 const [listOfRestaurants,setListofRestaurants]=useState([]);
 const [filteredList,setFilteredList]=useState([]);
 const [searchText,setSearchText]=useState([]);
-
+const RestaurantCardIsOpen=isOpenLable(RestaurantCard);
 useEffect(()=>{
     fetchData()
     },[]);
@@ -52,7 +52,11 @@ if(onlineStatus===false)
        
          {
           filteredList.map((restaurant)=>(
-            <Link key={restaurant.info.id} to={"/restaurants/"+restaurant.info.id}><RestaurantCard  resObj={restaurant}/> </Link>
+            <Link key={restaurant.info.id} to={"/restaurants/"+restaurant.info.id}>
+              {
+                restaurant.info.isOpen ? <RestaurantCardIsOpen resObj={restaurant}/>:<RestaurantCard  resObj={restaurant}/>
+              }
+               </Link>
           ))
          }
   
